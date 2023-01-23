@@ -6,6 +6,7 @@ import mildthreat.framecalc.service.FrameCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,17 @@ public class FrameCalcController {
     @Autowired
     FrameCalcService frameCalcService;
 
-    @PostMapping("/details")
+    @PostMapping("/calculate")
     @ResponseBody
-    public ResponseEntity<FrameCalcResponse> addSapien(@RequestBody FrameCalcRequest frameCalcRequest) {
-        FrameCalcResponse frameDetails = frameCalcService.calculateFrameDetails(frameCalcRequest);
+    public ResponseEntity<FrameCalcResponse> calculateFrameDimensions(@RequestBody FrameCalcRequest frameCalcRequest) {
+        FrameCalcResponse frameDetails = frameCalcService.calculateFrameDimensions(frameCalcRequest);
         return new ResponseEntity<>(frameDetails, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/usageStats")
+    @ResponseBody
+    public ResponseEntity<Long> getUsageStats() {
+        Long usageStats = frameCalcService.getUsageStats();
+        return new ResponseEntity<>(usageStats, HttpStatus.CREATED);
     }
 }

@@ -6,7 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface FrameCalcService {
-    FrameCalcResponse calculateFrameDimensions(FrameCalcRequest frameCalcRequest);
-
-    Long getUsageStats();
+    FrameCalcResponse calculateFrameDetails(FrameCalcRequest frameCalcRequest);
 }

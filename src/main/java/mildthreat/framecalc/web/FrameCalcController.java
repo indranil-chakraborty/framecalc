@@ -7,6 +7,7 @@ import mildthreat.framecalc.service.FrameCalcService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,12 +25,14 @@ public class FrameCalcController {
 
     @PostMapping("/calculate")
     @ResponseBody
+    @PreAuthorize("hasAnyAuthority('APPROLE_Admin', 'APPROLE_User')")
     public ResponseEntity<FrameCalcResponse> calculateFrameDetails(@RequestBody FrameCalcRequest frameCalcRequest) {
         FrameCalcResponse frameDetails = frameCalcService.calculateFrameDetails(frameCalcRequest);
         return new ResponseEntity<>(frameDetails, HttpStatus.OK);
     }
 
     @GetMapping("/usageStats")
+    @PreAuthorize("hasAuthority('APPROLE_Admin')")
     @ResponseBody
     public ResponseEntity<TelemetryResponse> getUsageStats() {
         TelemetryResponse telemetryResponse = frameCalcService.getTelemetryResults();

@@ -2,17 +2,17 @@ package mildthreat.framecalc.data.payloads.response;
 
 public class TelemetryResponse {
 
-    private int usageCount;
+    private long usageCount;
 
-    public int getUsageCount() {
+    public long getUsageCount() {
         return usageCount;
     }
 
-    public void setUsageCount(int usageCount) {
+    public void setUsageCount(long usageCount) {
         this.usageCount = usageCount;
     }
 
-    public TelemetryResponse(int usageCount){
+    public TelemetryResponse(long usageCount) {
         this.usageCount = usageCount;
     }
 

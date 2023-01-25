@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public interface FrameCalcService {
     // Interface method to calculate frame details
     FrameCalcResponse calculateFrameDetails(FrameCalcRequest frameCalcRequest);
+
     // Interface method to return telemetry details
     TelemetryResponse getTelemetryResults();
 

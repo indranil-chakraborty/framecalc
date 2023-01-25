@@ -10,4 +10,5 @@ public class FrameCalcApplication {
         SpringApplication.run(FrameCalcApplication.class, args);
     }
 
+
 }
